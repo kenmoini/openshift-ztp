@@ -1,0 +1,25 @@
+---
+apiVersion: tower.ansible.com/v1alpha1
+kind: AnsibleJob
+metadata:
+  name: sno-ocp-vsphere-bootstrap
+  namespace: sno-ocp
+  labels:
+    name: sno-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: LabDC
+    cluster: LabCluster
+    cluster-name: sno-ocp
+spec:
+  tower_auth_secret: ansible-tower-credentials
+  job_template_name: vsphere-infra-ztp
+  extra_vars:
+    vcenter_credentials_secret_namespace: sno-ocp
+    vcenter_credentials_secret_name: loe-rdu-vcenter-credentials
+
+    infraenv_namespace: sno-ocp
+    infraenv_name: sno-ocp
+
+    cluster_configmap_namespace: sno-ocp
+    cluster_configmap_name: sno-ocp-cluster-config
