@@ -1,0 +1,25 @@
+---
+apiVersion: tower.ansible.com/v1alpha1
+kind: AnsibleJob
+metadata:
+  name: vsphere-ocp-vsphere-bootstrap
+  namespace: vsphere-ocp
+  labels:
+    name: vsphere-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: LabDC
+    cluster: LabCluster
+    cluster-name: vsphere-ocp
+spec:
+  tower_auth_secret: ansible-tower-credentials
+  job_template_name: vsphere-infra-ztp
+  extra_vars:
+    vcenter_credentials_secret_namespace: vsphere-ocp
+    vcenter_credentials_secret_name: loe-rdu-vcenter-credentials
+
+    infraenv_namespace: vsphere-ocp
+    infraenv_name: vsphere-ocp
+
+    cluster_configmap_namespace: vsphere-ocp
+    cluster_configmap_name: vsphere-ocp-cluster-config
