@@ -1,0 +1,33 @@
+---
+apiVersion: hive.openshift.io/v1
+kind: ClusterDeployment
+metadata:
+  annotations:
+    agentBareMetal-agentSelector/autoSelect: "true"
+  name: tosin-ocp
+  namespace: tosin-ocp
+  labels:
+    name: tosin-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: Datacenter
+    cluster: Cluster
+    cluster-name: tosin-ocp
+spec:
+  baseDomain: atl.kemo.labs
+  clusterName: tosin-ocp
+  #controlPlaneConfig:
+  #  servingCertificates: {}
+  installed: false
+  clusterInstallRef:
+    group: extensions.hive.openshift.io
+    kind: AgentClusterInstall
+    name: tosin-ocp
+    version: v1beta1
+  platform:
+    agentBareMetal:
+      agentSelector:
+        matchLabels:
+          cluster-name: tosin-ocp
+  pullSecretRef:
+    name: assisted-deployment-pull-secret

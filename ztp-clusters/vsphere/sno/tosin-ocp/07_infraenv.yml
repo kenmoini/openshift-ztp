@@ -1,0 +1,28 @@
+---
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  name: tosin-ocp
+  namespace: tosin-ocp
+  labels:
+    name: tosin-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: Datacenter
+    cluster: Cluster
+    cluster-name: tosin-ocp
+    agentclusterinstalls.extensions.hive.openshift.io/location: loe-rhu
+    networkType: static
+spec:
+  agentLabels:
+    agentclusterinstalls.extensions.hive.openshift.io/location: loe-rhu
+  clusterRef:
+    name: tosin-ocp
+    namespace: tosin-ocp
+  sshAuthorizedKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCmLnWX3C5xqIOFi4E/1CX5d/1TxOFCk+PH7DFDmCd+vQ7g/39Xxb8xjZE+xKPS/8KK7ylghbAChab+eGmh+xWNaei2eEt4vys+Kia2IgimXC6EUeh/onyq38qlnadY6pZa0nqW9oGXVN1vHj0X+Y8oOE1s+e+GusDbK9NcknUtT24SWD523qnqU3+GwAmiF6lm4Wz2dvvUHG25JI/QF9KH/qu1KkxZV2QWq8BnSRSljHvg5XeEBBSJ7Ah0AL9DR0tLjtMriEL2NbbzdeeyaUm233/G5ojbyGULiOMY1P2nP5+a09VTYebbzAgGyFjzca1fJBTAFzmWPiZp44HdILXpEB5QwK6hyh7+hek74eUmk3SEYC+X5Ql1GvbS2JTXPM/XOiy0tzTQ1P7ztuaM+sgv217+0zPvJvuZNinuoslrGL0lP7J0hJVxmCkrphasz0+FcLmQetzwX7VoOOcSw2e3HUFLg307xP2V8SI36ZQJ5YxW6C9zg+Kqsd81TMFJ7VRy//pbjOQ0CLhOROsT+zNedQY9I+fWUClKuvZ8qr9njCOqfnY80Pm2wwNmzSZ4HQ5TyQ/LBq/4Gh6M4tZzi8kODrTxOUYQFkPtI8QK0vFCw2HJGbNjWRMAv1ovPT9eVV4tREWwG3jTOZUyhCaFzyw8rqMwHIsdf8/Lj/8OiDnBAQ=="
+  pullSecretRef:
+    name: assisted-deployment-pull-secret
+  #ignitionConfigOverride: '{"ignition": {"version": "3.1.0"}, "storage": {"files": [{"path": "/etc/someconfig", "contents": {"source": "data:text/plain;base64,aGVscGltdHJhcHBlZGluYXN3YWdnZXJzcGVj"}}]}}'
+  nmStateConfigLabelSelector:
+    matchLabels:
+      cluster-name: tosin-ocp

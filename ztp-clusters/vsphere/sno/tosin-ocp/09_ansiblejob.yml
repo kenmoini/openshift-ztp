@@ -1,0 +1,25 @@
+---
+apiVersion: tower.ansible.com/v1alpha1
+kind: AnsibleJob
+metadata:
+  name: tosin-ocp-vsphere-bootstrap
+  namespace: tosin-ocp
+  labels:
+    name: tosin-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: Datacenter
+    cluster: Cluster
+    cluster-name: tosin-ocp
+spec:
+  tower_auth_secret: ansible-tower-credentials
+  job_template_name: vsphere-infra-ztp
+  extra_vars:
+    vcenter_credentials_secret_namespace: tosin-ocp
+    vcenter_credentials_secret_name: loe-atl1-vcenter-credentials
+
+    infraenv_namespace: tosin-ocp
+    infraenv_name: tosin-ocp
+
+    cluster_configmap_namespace: tosin-ocp
+    cluster_configmap_name: tosin-ocp-cluster-config
