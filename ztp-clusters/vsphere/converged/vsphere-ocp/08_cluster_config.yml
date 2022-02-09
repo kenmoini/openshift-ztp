@@ -1,0 +1,24 @@
+---
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: vsphere-ocp-cluster-config
+  namespace: vsphere-ocp
+  labels:
+    name: vsphere-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: LabDC
+    cluster: LabCluster
+    cluster-name: vsphere-ocp
+data:
+  cluster_name: vsphere-ocp
+  cluster_provider: vsphere
+  cluster_type: converged
+
+  vsphere_datacenter: LabDC
+  vsphere_cluster: LabCluster
+  vsphere_datastore: nvme
+  vsphere_network: VMNetwork
+
+  cluster_nodes: '[{"interfaces": [{"dhcp": true, "mac_address": "00:51:56:42:07:92", "name": "ens192", "routes": [{"destination": "0.0.0.0/0", "next_hop_address": "192.168.42.1", "next_hop_interface": "ens192", "table_id": 254}]}], "name": "ocp-1", "type": "control-plane", "vm": {"cpu_cores": 8, "cpu_sockets": 1, "cpu_threads": 1, "disks": [{"name": "boot", "size": 240}, {"name": "odf", "size": 240}], "memory": 65536}}, {"interfaces": [{"dhcp": true, "mac_address": "00:51:56:42:07:93", "name": "ens192", "routes": [{"destination": "0.0.0.0/0", "next_hop_address": "192.168.42.1", "next_hop_interface": "ens192", "table_id": 254}]}], "name": "ocp-2", "type": "control-plane", "vm": {"cpu_cores": 8, "cpu_sockets": 1, "cpu_threads": 1, "disks": [{"name": "boot", "size": 240}, {"name": "odf", "size": 240}], "memory": 65536}}, {"interfaces": [{"dhcp": true, "mac_address": "00:51:56:42:07:94", "name": "ens192", "routes": [{"destination": "0.0.0.0/0", "next_hop_address": "192.168.42.1", "next_hop_interface": "ens192", "table_id": 254}]}], "name": "ocp-3", "type": "control-plane", "vm": {"cpu_cores": 8, "cpu_sockets": 1, "cpu_threads": 1, "disks": [{"name": "boot", "size": 240}, {"name": "odf", "size": 240}], "memory": 65536}}]'
