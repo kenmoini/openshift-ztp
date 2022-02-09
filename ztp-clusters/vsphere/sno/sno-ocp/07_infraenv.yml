@@ -1,0 +1,28 @@
+---
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  name: sno-ocp
+  namespace: sno-ocp
+  labels:
+    name: sno-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: LabDC
+    cluster: LabCluster
+    cluster-name: sno-ocp
+    agentclusterinstalls.extensions.hive.openshift.io/location: loe-1
+    networkType: static
+spec:
+  agentLabels:
+    agentclusterinstalls.extensions.hive.openshift.io/location: loe-1
+  clusterRef:
+    name: sno-ocp
+    namespace: sno-ocp
+  sshAuthorizedKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvptS8s4qwLA53+DmTCHTZfjqLIKkxxPdI1unx/0WI+L6cr99rVkyB1otaUEZaVwdNfGSZquGEimf1EPQHcE64UZi7kyGcQ60zg65zeJkkClQTrAf4RMP0ZbWmu+bpDdnw5C2Dli2zub6Ddyth0UJxxoHcIn9KU8lm0LHToF56KfmVTPvzmCwDMSYNR1t7KiJNVOZeXp90vUsKBzwKNuEIWYZ5CCd+t5r9GKGw1xeGhi/1eqh7mWxdFjUdjPLjdmmo6Ak6Q71oX3sVAMeLFQJgW7VG9XHoE5jhVlEshuoDIefSW3eA5ygjanNfMTIIwrfVGjxNcEemk5JdAHt73FA40bAHCYSIoBp1NE8drDj9z3cd2DcGz/dLKUAF+D4ttCnqKQQggy3d66iMp4nGLtcwFmWopGjGPnysagrW8cAmZ5VBTU7MoT6vS2oDzVTzlxHUU6aO/nj7JiQvrVG+pB6MkreXM01wy2806pjOZXcHQasOkacdBsSjW/Jt3CNd2i++fVx3Doj1tPjdYyDORCs2HKHJbcgiaVoiGHelNSe/0o6FQXTeOU6ueDeF/vditgk0ghihRq8JYGd8VpBKFxS2CP+SLL6gSjFkgcGdtuBOcGbJ3TlonCh3fiX1rDTHxLLRHcXHw9FT6oQSLou/h1Sq8Xi0IsNWh3lpIyi23/Qcvw=="
+  pullSecretRef:
+    name: assisted-deployment-pull-secret
+  #ignitionConfigOverride: '{"ignition": {"version": "3.1.0"}, "storage": {"files": [{"path": "/etc/someconfig", "contents": {"source": "data:text/plain;base64,aGVscGltdHJhcHBlZGluYXN3YWdnZXJzcGVj"}}]}}'
+  nmStateConfigLabelSelector:
+    matchLabels:
+      cluster-name: sno-ocp
