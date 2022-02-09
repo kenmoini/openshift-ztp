@@ -1,0 +1,34 @@
+---
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  name: sno-ocp
+  namespace: sno-ocp
+  labels:
+    name: sno-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: LabDC
+    cluster: LabCluster
+    cluster-name: sno-ocp
+spec:
+  clusterDeploymentRef:
+    name: sno-ocp
+  imageSetRef:
+    name: openshift-v4.9.9
+  #apiVIP: "192.168.42.71"
+  #ingressVIP: "192.168.42.71"
+  holdInstallation: false
+  networking:
+    networkType: OVNKubernetes
+    #userManagedNetworking: false
+    clusterNetwork:
+      - cidr: "10.128.0.0/14"
+        hostPrefix: 23
+    serviceNetwork:
+      - "172.30.0.0/16"
+    machineNetwork:
+      - cidr: "192.168.42.0/24"
+  provisionRequirements:
+    controlPlaneAgents: 1
+  sshPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCx9ygSoAduS/FJeBoeeEfJcaovN4HN/wWZFimPsuqUo6W9cERywRj0tMqxpUZHgc85nx3cwnQ98osDoGkEr7/+Cl8aongTq9YLdPm4OVPa46B7LMq605gAfQS2fhjKB1GzfCPvgy5Tne15mFGbuPtGBOT3yIPSgbGaK5iTx5/2V0HFRDxUv6iAdO+0EVjQ52pNdRcb7XAe6ei8CC/YlV7ZDAH9Tnpy7WVPycqMdGJuHcGQNn5Iyv9dIF7GgMkNJcc6rkq8QWuNb+yUfNMpZzV42qbSMoIWWKhtgGhQfRoxty/muAVlzIjVwnahBWkRCrz/5D57e7Iee1uHO+QCLH9eRdYm4bUk8HJrsOL0rihz7f4wlxHDy4NyEgB4n3aL57kaopOWzUW0LibsX91x0ZircaA7CYT46k88BTmtwoPd0ilojiNAaMw68sJ4VvQmZpwNPhzJ8vTLKVUQA0J5AJxeRWencZiKNNQ+T7haXzLcxNynHrZEkgVcMXjpEmb5magVWb1JLZ5bp2nYumPY7hlUsubDppccKSjEUjlwQvjyFqmVoZ0s2PbmSgC+qLGN4swrjAywRwdHHcNeYZUZlb/quatcObeVcZsGrfwmDlfJokyIVr412mk5U0k9cqmGO0FLWST9l8gxlaZO1X3ZjHqA+QEztEDA3t9HAaHUYHtnDw=="
