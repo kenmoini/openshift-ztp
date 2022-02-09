@@ -1,0 +1,28 @@
+---
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  name: loe-sno-atl2
+  namespace: loe-sno-atl2
+  labels:
+    name: loe-sno-atl2
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: Datacenter
+    cluster: Cluster
+    cluster-name: loe-sno-atl2
+    agentclusterinstalls.extensions.hive.openshift.io/location: loe-atl2
+    networkType: static
+spec:
+  agentLabels:
+    agentclusterinstalls.extensions.hive.openshift.io/location: loe-atl2
+  clusterRef:
+    name: loe-sno-atl2
+    namespace: loe-sno-atl2
+  sshAuthorizedKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC6sWHo5zOWKZLNsJiPbSb54m0k27HzjjXa75L5CmTLJjKNrzj6qTxYR2E1zPiYwMbcTxEDndJz9FPsniHngjET03MxQV4jYdnhHQke4NDn07TDTjH+3eiyWaBVyzSOAXPvvQZh7vDMsduQwhxGDxTzlkbgHpjwWrdNnFws+ys+/hr6DbWH3NwWKEpW1jlsRxXuKe7mnWnkxrxvQd1+njmnVDnAVrSl9KUDvh+FUxHXsMa6waXLmUyB5ns3Se2R9BssGkkg5KlyCIheR2tUV6ZKLFwKH6Y7T1QqEHeIXho1vPDtmfVcwljnTe/fmKhSq4y8+oXCo40GwjOy+7//1kGsBUxlcqO1doXY5FMfcxDQwtvE7xLjwQ7gw6v6GSgFbr4Pu8+bMzHufkA1RlareP1M8zk43KOEYOyXL7eMT8Hyn6vFNFS5vSiHFWjjrUbZOwym/g3p4QYZ/HJJVBHklU3LocPo1SM4iHjb8Y3wOsQOi/HxjT163HcfV0oMVFbJt1+nBh1EutP9l8MAqZ5TlmAJVRDutDwB4CcdR3LTyjRHra+VDt8+yY4Mrn95AW9qPw226t8yAOFdNnv4ufxZvNYdvdU25hMupEt+QFif7Lq8tvf1+GLGJNcX09pa4CBUSYawabJsKWKgrASl+SwxQMDx3NfXxDNDEz9lVwYdz9vRHw=="
+  pullSecretRef:
+    name: assisted-deployment-pull-secret
+  #ignitionConfigOverride: '{"ignition": {"version": "3.1.0"}, "storage": {"files": [{"path": "/etc/someconfig", "contents": {"source": "data:text/plain;base64,aGVscGltdHJhcHBlZGluYXN3YWdnZXJzcGVj"}}]}}'
+  nmStateConfigLabelSelector:
+    matchLabels:
+      cluster-name: loe-sno-atl2
