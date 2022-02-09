@@ -1,0 +1,28 @@
+---
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  name: vsphere-ocp
+  namespace: vsphere-ocp
+  labels:
+    name: vsphere-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: LabDC
+    cluster: LabCluster
+    cluster-name: vsphere-ocp
+    agentclusterinstalls.extensions.hive.openshift.io/location: loe-rhu
+    networkType: static
+spec:
+  agentLabels:
+    agentclusterinstalls.extensions.hive.openshift.io/location: loe-rhu
+  clusterRef:
+    name: vsphere-ocp
+    namespace: vsphere-ocp
+  sshAuthorizedKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCxsudUDZ3LYWDj7eZcgxKYuhHWc9mO9X/heEp8ig9I7z+B/BhKbf75wVMx4ImbANx+RVDNjG13QDlLrT0hh8YEJB7BbH7ryrStAW6q0KEQEeiQDWasSi20lpFUKvKKZb0yrtphI05cC5gjbNNqkZMUulbljCgKIV37e74XWI7vJXroJrLqMqRSoO7XCV9u/J7MnWQ151DrLQD/FZxyX2AJcHZWHmN7LoiBONce9P15EG7feM/ZzOapyO7x/301e415VS9dMdntDPZT3nrSJELgtmC+S35C8PyQB37pntC4a4lwvov1Hx0UbELNgdD570dg19++TRoWsetTgneHS6Da17xBFc8L72jb5MrDrt+Rz4lfqSMKv9BC0DC7VGEl0isaTY99BxT5R8ev2nbVqTQLHfjTIG+RCWeE12YB++/Ocoyy/rv1Um3zniA8WvMPBDI7xdbD1Dvzodlwrj1wBMhYKImXbAA8xtglh4D9yv3MqXgRvTO4nsjgOyTCPYyMQUXaqZ7sbN6IyI02HWu9+c3kuniu+r2IWD1rE/G/mFsjr6W+XPp4Udj2cnNpa4Za3kUBag3/QTP4pM7p3M8CsvyRCulJMVDmN94lAAIlBPFb3bqsg3A47XnrVcpo2MIwLkmFllA1x8RacM25qEkOTUH/kZaIsmg5rxgBagrfXyC9jw=="
+  pullSecretRef:
+    name: assisted-deployment-pull-secret
+  #ignitionConfigOverride: '{"ignition": {"version": "3.1.0"}, "storage": {"files": [{"path": "/etc/someconfig", "contents": {"source": "data:text/plain;base64,aGVscGltdHJhcHBlZGluYXN3YWdnZXJzcGVj"}}]}}'
+  nmStateConfigLabelSelector:
+    matchLabels:
+      cluster-name: vsphere-ocp

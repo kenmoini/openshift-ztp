@@ -1,0 +1,11 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: vsphere-ocp
+  labels:
+    name: vsphere-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: LabDC
+    cluster: LabCluster
+    cluster-name: vsphere-ocp
