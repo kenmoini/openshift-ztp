@@ -1,0 +1,34 @@
+---
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  name: loe-sno-atl2
+  namespace: loe-sno-atl2
+  labels:
+    name: loe-sno-atl2
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: Datacenter
+    cluster: Cluster
+    cluster-name: loe-sno-atl2
+spec:
+  clusterDeploymentRef:
+    name: loe-sno-atl2
+  imageSetRef:
+    name: openshift-v4.9.9
+  #apiVIP: "192.168.1.7"
+  #ingressVIP: "192.168.1.7"
+  holdInstallation: false
+  networking:
+    networkType: OVNKubernetes
+    #userManagedNetworking: false
+    clusterNetwork:
+      - cidr: "10.128.0.0/14"
+        hostPrefix: 23
+    serviceNetwork:
+      - "172.30.0.0/16"
+    machineNetwork:
+      - cidr: "192.168.1.0/24"
+  provisionRequirements:
+    controlPlaneAgents: 1
+  sshPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDKdOL6aFhOg2NHeCCBLkn4yU9hLOdt0p6h/MSGKqzwWVJ5vJklxjSh0qktYs1IB/sSadumRSG3uesUn+x71MAbdj7uESqBItorGlWQ565CygWQHwZ+P9AVyTUug2UHjflp5drkM2NHCqllUChqlTkaNSejjR+DqXdLX/Gs6+Xwyeq269syrtkOlCm7kuSrYNYOYwSkZYiAbju0OgUhUKGjCLwUfNld7tqMS0bPJXdmkaSeOQ1qYgtO+zoLr98Vwhnai50BQKIYQoFbLcChsPtwAMRdS75wNApRGmU2MwG7C8f78PWnOjh6I1ugJiInA2y2yJ+4GPoUUrifH7lyGuXo93vDK0BmJ6CaG157OqwdrW2wLpgR+YqTT9JG4GjfjK/SN+YU8c4uZ0Ai1E9tgkjaizilRI7l9eC3Pme0gWUWJNl6FVjxXBNOb6Z+rcOiL20TUsg9jCCWiUmt6sC+OLK3zBwIcm4bigR96DyFjslci2YwBYiFdDI816CZ5C/QceOkp2kmfi2214j2ZOllDywmUDkUamKceFQTM80LlA0GczHDbc//DtwU3z4uBJKmLrRNbCHMoSpC5+8b9pFTnMgiSuDpHu7gYq/zQEZbgrdLh+sY3HLRYEH9YmeXP+2VF9f59tzb+ZARLQNcLks9dE5ck4x01hq1ufYcCy+R37vK0Q=="
