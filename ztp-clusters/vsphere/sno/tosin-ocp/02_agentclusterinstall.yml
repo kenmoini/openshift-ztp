@@ -1,0 +1,34 @@
+---
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  name: tosin-ocp
+  namespace: tosin-ocp
+  labels:
+    name: tosin-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: Datacenter
+    cluster: Cluster
+    cluster-name: tosin-ocp
+spec:
+  clusterDeploymentRef:
+    name: tosin-ocp
+  imageSetRef:
+    name: openshift-v4.9.9
+  #apiVIP: "192.168.1.5"
+  #ingressVIP: "192.168.1.5"
+  holdInstallation: false
+  networking:
+    networkType: OVNKubernetes
+    #userManagedNetworking: false
+    clusterNetwork:
+      - cidr: "10.128.0.0/14"
+        hostPrefix: 23
+    serviceNetwork:
+      - "172.30.0.0/16"
+    machineNetwork:
+      - cidr: "192.168.1.0/24"
+  provisionRequirements:
+    controlPlaneAgents: 1
+  sshPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCsrRp8qXVozZid40no9uZa44+oiK/+5asEiz4og4HXs6S2xcY8GbS2okCe+nujzaD4NyYBaE28aJKxVDJt/BlmIr9Cd82Az9xaIa1UQJLJZDrBMWTAROn/ixegETFQYv3Hsfo9SoJFqgzJb/yBy7LqJvRY7exZdUAoGRCeiInirmbw4710xrubDF1xI1kcXbuPu3ajEGgx5pW/b2gJDQ6rTO+6nt8JioMmNv+ULfpYMkifpwxy6jtuen0udoGRlw1DdcR7DzUGpSDpKNhrtB+oQ5VBaA5SKHwznfh0fsh3/R03tx3aKmdQxSW1owpSRdQ/reSicyBu9JwdHg1vymgenoPBOwR7T1lBqTOOe++M9Z+LnnlzT4kQqOgVniyw+lrPjrl0LoL7wI6fZAFCF8IkqTl8BLUdFe1ST2v6EGDL01CxsbUXBe+7KPbnd+VBb8w4YN/KuWxcjIxH9xUyzz8ogLkIdNrnhUs4v512FWuejNFeks+CZFp4zk3bQbtCc0ZOzBday7JJ3VjYv6hqYXq6bq3+V9ngFLJWw7QZ8so7jernc+eSzjePB717fRtlJzy5CAwMxl87JbonSBbwsqbq0Ab03X3/VhmIq963YKQGVhwVtrqLUZfaD0w87qeaqLq0rZi9QIAPIdr6r87MQ+8aH1z8q80OCNbbY5UF8zoeUw=="

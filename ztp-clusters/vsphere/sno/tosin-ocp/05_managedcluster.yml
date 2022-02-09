@@ -1,0 +1,15 @@
+---
+apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: tosin-ocp
+  namespace: tosin-ocp
+  labels:
+    name: tosin-ocp
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: Datacenter
+    cluster: Cluster
+    cluster-name: tosin-ocp
+spec:
+  hubAcceptsClient: true
