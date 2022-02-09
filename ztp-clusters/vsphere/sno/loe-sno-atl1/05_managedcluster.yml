@@ -1,0 +1,15 @@
+---
+apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: loe-sno-atl1
+  namespace: loe-sno-atl1
+  labels:
+    name: loe-sno-atl1
+    cloud: vSphere
+    vendor: OpenShift
+    datacenter: Datacenter
+    cluster: Cluster
+    cluster-name: loe-sno-atl1
+spec:
+  hubAcceptsClient: true
